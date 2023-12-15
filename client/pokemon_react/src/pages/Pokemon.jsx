@@ -5,13 +5,20 @@ import allMoves from "../data/allUsedMoves.json"
 import allAbilites from "../data/allUsedAbilites.json"
 import ListGroup from '../components/ListGroup';
 import TeamGroup from '../components/TeamGroup';
-
+import AbilityGroup from '../components/AbilityGroup';
+import EvGroup from '../components/EvGroup';
+import ItemGroup from '../components/ItemGroup';
+import "../App.css"
+import TypeEffectiveness from '../data/functions';
+import TypeChart from '../components/TypeChart';
 
 
 const Pokemon = () => {
   const [mon, setMon] = useState([]);
   const [allPokemonInTier, setAllPokemonInTier] = useState([]);
   const { tier, name } = useParams();
+  const pokemonTypeEffectiveness = TypeEffectiveness('fire', 'flying');
+  console.log(pokemonTypeEffectiveness);
 
 
   useEffect(() => {
@@ -20,10 +27,7 @@ const Pokemon = () => {
         
         
         // Check if the name parameter is undefined
-        if (name === undefined) {
-          console.log("Name parameter is undefined");
-          return;
-        }
+        if (!name) return console.log("Name parameter is undefined");
 
         const res = await axios.get(`http://localhost:8800/pokemon/${tier}/${name}`);
         setMon(res.data[0]);
@@ -57,10 +61,17 @@ const Pokemon = () => {
       {mon && (
         
         <div  style = {{}}className="pokemon" >
+           <h2>{mon.name || 'ok'}</h2>
+           {console.log(mon.data)}
+          <img src={mon.sprite} alt={mon.name}></img>
           <div style={{width: "400px"}}><ListGroup moves={mon.data?.Moves || {}}/></div>
           <div style={{width: "400px"}}> <TeamGroup teammates= {mon.data?.Teammates || {}}  tier= {allPokemonInTier || []} /> </div>
+          <div style={{width: "400px"}}><AbilityGroup abilities={mon.data?.Abilities || {}}/></div>
+          <div style={{width: "400px"}}><EvGroup evs={mon.data?.Spreads || {}}/></div>
+          <div style={{width: "400px"}}><ItemGroup items={mon.data?.Items || {}}/></div>
+          <TypeChart effectiveness = {pokemonTypeEffectiveness}/>
           {console.log(mon)}
-          <h2>{mon.name || 'ok'}</h2>
+          {/* <h2>{mon.name || 'ok'}</h2>
           <img src={mon.sprite} alt={mon.name}></img>
           {Object.keys(mon.data?.Items || {})
           .sort((a, b) => mon.data.Items[b] - mon.data.Items[a])
@@ -100,7 +111,7 @@ const Pokemon = () => {
             <p key={spread}>
               {spread} <span>{mon.data.Spreads[spread]}%</span>
             </p>
-          ))}
+          ))} */}
         </div>
       )}
     </>
