@@ -9,6 +9,7 @@ import {
 import Pokemon from "./pages/Pokemon"
 import Add from "./pages/Add"
 import Tier from "./pages/Tier"
+import "./App.css"
 
 function App() {
  const router = createBrowserRouter([

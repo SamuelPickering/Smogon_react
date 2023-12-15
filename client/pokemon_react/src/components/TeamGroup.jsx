@@ -11,25 +11,24 @@ const TeamGroup = (props) => {
   return (
     <>
     <h1>Teammates</h1>
-   <ul className="list-group">
-       {console.log(teammates)}
-       {console.log(tier)}
+   <ul  className="list-group overflow-auto" style={{ maxHeight: '300px' }}>
+       {/* {console.log(teammates)}
+       {console.log(tier)} */}
        {Object.keys((teammates || {}))
        .sort((a, b) => teammates[b] - teammates[a])
        .map((teammate) =>   { 
         let partner = teammate.split("/")[1]
-        console.log(partner)
         let partnerInfo = tier.find((pokemon) => pokemon.name === partner);
         return (
             <> 
-            {console.log(partner, tier[partner])}
+            
            <li key={teammate} 
            className="list-group-item"
            onClick={() => handleClick(partner)}
            style={{ cursor: 'pointer' }}
            >
-           {partnerInfo?.sprite && <img src={partnerInfo.sprite} key={partner} alt={partner} />}
-             {partner} , {teammates[teammate]}%</li>
+           {partnerInfo?.sprite && <img src={partnerInfo.sprite} key={partner} alt={partner} style={{ width: '72px', height: '72px' }} />}
+             {partner}  {teammates[teammate]}%</li>
            </>
        )
        })}
