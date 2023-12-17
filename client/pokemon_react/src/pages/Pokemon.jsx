@@ -11,6 +11,8 @@ import ItemGroup from '../components/ItemGroup';
 import "../App.css"
 import TypeEffectiveness from '../data/functions';
 import TypeChart from '../components/TypeChart';
+import StatsTable from '../components/StatsTable';
+import Header from '../components/Header';
 
 
 const Pokemon = () => {
@@ -18,6 +20,7 @@ const Pokemon = () => {
   const [allPokemonInTier, setAllPokemonInTier] = useState([]);
   const { tier, name } = useParams();
   const pokemonTypeEffectiveness = TypeEffectiveness('fire', 'flying');
+  const gyatt = {HP : 80 ,Atk : 145, Def : 125, SpA : 55, SpD : 200, Spe : 50 } 
   console.log(pokemonTypeEffectiveness);
 
 
@@ -61,6 +64,7 @@ const Pokemon = () => {
       {mon && (
         
         <div  style = {{}}className="pokemon" >
+          <Header/>
            <h2>{mon.name || 'ok'}</h2>
            {console.log(mon.data)}
           <img src={mon.sprite} alt={mon.name}></img>
@@ -70,48 +74,9 @@ const Pokemon = () => {
           <div style={{width: "400px"}}><EvGroup evs={mon.data?.Spreads || {}}/></div>
           <div style={{width: "400px"}}><ItemGroup items={mon.data?.Items || {}}/></div>
           <TypeChart effectiveness = {pokemonTypeEffectiveness}/>
+          <StatsTable stats={gyatt}/>
           {console.log(mon)}
-          {/* <h2>{mon.name || 'ok'}</h2>
-          <img src={mon.sprite} alt={mon.name}></img>
-          {Object.keys(mon.data?.Items || {})
-          .sort((a, b) => mon.data.Items[b] - mon.data.Items[a])
-          .map((item) => (
-            <p key={item}>
-              {item} <span>{mon.data.Items[item]}%</span>
-            </p>
-          ))}
-          <h4>Moves</h4>
-          {Object.keys(mon.data?.Moves || {})
-          .sort((a, b) => mon.data.Moves[b] - mon.data.Moves[a])
-          .map((move) => (
-            <p key={move}>
-              {move !== "other" ? allMoves[move].display : "other"} <span>{mon.data.Moves[move]}%</span>
-            </p>
-          ))}
-          <h4>Abilities</h4>
-          {Object.keys(mon.data?.Abilities || {})
-          .sort((a, b) => mon.data.Abilities[b] - mon.data.Abilities[a])
-          .map((ability) => (
-            <p key={ability}> 
-              {allAbilites[ability].display} <span>{mon.data.Abilities[ability]}%</span>
-            </p>
-          ))}
-          <h4>Teammates</h4>
-          {Object.keys(mon.data?.Teammates || {})
-          .sort((a, b) => mon.data.Teammates[b] - mon.data.Teammates[a])
-          .map((teammate) => (
-            <p key={teammate}>
-              {teammate} <span>{mon.data.Teammates[teammate]}%</span>
-            </p>
-          ))}
-          <h4>Ev Spreads</h4>
-          {Object.keys(mon.data?.Spreads || {})
-          .sort((a, b) => mon.data.Spreads[b] - mon.data.Spreads[a])
-          .map((spread) => (
-            <p key={spread}>
-              {spread} <span>{mon.data.Spreads[spread]}%</span>
-            </p>
-          ))} */}
+          
         </div>
       )}
     </>

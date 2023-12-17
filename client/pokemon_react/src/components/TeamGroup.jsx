@@ -28,7 +28,7 @@ const TeamGroup = (props) => {
            style={{ cursor: 'pointer' }}
            >
            {partnerInfo?.sprite && <img src={partnerInfo.sprite} key={partner} alt={partner} style={{ width: '72px', height: '72px' }} />}
-             {partner}  {teammates[teammate]}%</li>
+             {partner}  {teammates[teammate]}%  </li>
            </>
        )
        })}
