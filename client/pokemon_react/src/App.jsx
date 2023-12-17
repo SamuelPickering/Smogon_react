@@ -25,7 +25,7 @@ function App() {
     element: <div>Add</div>,
   },
   {
-    path: "pokemon/:tier",
+    path: "pokemon/:tier/meta",
     element: <Tier>Add</Tier>,
   },
 ]);

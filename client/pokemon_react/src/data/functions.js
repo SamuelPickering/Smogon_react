@@ -24,6 +24,7 @@ export default function TypeEffectiveness(primaryType, secondaryType) {
   
       const obj = {};
       types.forEach((type) => {
+        console.log(type)
         const typeEntry = typeChart[type];
   
         typeEntry.weak.forEach((weakType) => {

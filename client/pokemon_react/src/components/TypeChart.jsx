@@ -1,6 +1,8 @@
 import React from 'react';
+import TypeEffectiveness from '../data/functions';
 
-const TypeChart = ({ effectiveness }) => {
+const TypeChart = (props) => {
+    const {type1, type2} = props
     const typeColors = {
         poison: '#934397',
         grass: '#72c232',
@@ -21,6 +23,9 @@ const TypeChart = ({ effectiveness }) => {
         dragon: '#41318a',
         normal: '#8f8b80',
       };
+      console.log( "bruh", type1, type2)
+      const effectiveness = TypeEffectiveness(type1, type2)
+      
   const renderTypeSquare = (type) => {
     const value = effectiveness[type] || 1;
     const isEmpty = value === 1;

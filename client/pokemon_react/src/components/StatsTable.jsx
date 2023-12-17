@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 const StatBar = ({ statName, statValue }) => {
   const maxStatValue = 200; // Assuming the maximum stat value is 200 for the bar length
   const barLength = (statValue / maxStatValue) * 100;

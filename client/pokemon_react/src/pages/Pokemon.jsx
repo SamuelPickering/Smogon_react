@@ -13,15 +13,15 @@ import TypeEffectiveness from '../data/functions';
 import TypeChart from '../components/TypeChart';
 import StatsTable from '../components/StatsTable';
 import Header from '../components/Header';
+import Sidebar from '../components/SideBar';
 
 
 const Pokemon = () => {
   const [mon, setMon] = useState([]);
   const [allPokemonInTier, setAllPokemonInTier] = useState([]);
   const { tier, name } = useParams();
-  const pokemonTypeEffectiveness = TypeEffectiveness('fire', 'flying');
-  const gyatt = {HP : 80 ,Atk : 145, Def : 125, SpA : 55, SpD : 200, Spe : 50 } 
-  console.log(pokemonTypeEffectiveness);
+  let gyatt = {HP : 80 ,Atk : 145, Def : 125, SpA : 55, SpD : 200, Spe : 50 } 
+
 
 
   useEffect(() => {
@@ -36,6 +36,7 @@ const Pokemon = () => {
         setMon(res.data[0]);
         console.log(res.data);
         console.log({mon})
+
       } catch (err) {
         console.log(err.message);
       }
@@ -58,6 +59,7 @@ const Pokemon = () => {
     fetchAllPokemonInTier();
   }, [tier]);
 
+
   return (
     <>
       {console.log(allMoves["accelerock"].display)}
@@ -73,8 +75,8 @@ const Pokemon = () => {
           <div style={{width: "400px"}}><AbilityGroup abilities={mon.data?.Abilities || {}}/></div>
           <div style={{width: "400px"}}><EvGroup evs={mon.data?.Spreads || {}}/></div>
           <div style={{width: "400px"}}><ItemGroup items={mon.data?.Items || {}}/></div>
-          <TypeChart effectiveness = {pokemonTypeEffectiveness}/>
-          <StatsTable stats={gyatt}/>
+          <TypeChart type1 = {mon.type1 ? mon.type1 : "fire"} type2 = {mon.type2}/>
+          <StatsTable stats={mon.data ? { HP: mon.hp, Atk: mon.atk, Def: mon.def, SpA: mon.spAtk, SpD: mon.spDef, Spe: mon.spe } : gyatt} />
           {console.log(mon)}
           
         </div>
