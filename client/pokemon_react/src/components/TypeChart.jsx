@@ -23,11 +23,12 @@ const TypeChart = (props) => {
         dragon: '#41318a',
         normal: '#8f8b80',
       };
-      console.log( "bruh", type1, type2)
       const effectiveness = TypeEffectiveness(type1, type2)
-      
+      console.log(effectiveness)
   const renderTypeSquare = (type) => {
-    const value = effectiveness[type] || 1;
+    let value
+    if(effectiveness[type] === 0) value = 0 
+    else value = effectiveness[type] || 1;
     const isEmpty = value === 1;
 
 

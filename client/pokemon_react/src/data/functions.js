@@ -16,7 +16,7 @@ export default function TypeEffectiveness(primaryType, secondaryType) {
       ghost: { weak: ['ghost', 'dark'], resistant: ['poison', 'bug'], immune: ['normal', 'fighting'] },
       dragon: { weak: ['ice', 'dragon', 'fairy'], resistant: ['fire', 'water', 'grass', 'electric'] },
       dark: { weak: ['fighting', 'bug', 'fairy'], resistant: ['ghost', 'dark'] },
-      steel: { weak: ['fire', 'fighting', 'ground'], resistant: ['normal', 'grass', 'ice', 'flying', 'psychic', 'bug', 'rock', 'dragon', 'steel', 'fairy'] },
+      steel: { weak: ['fire', 'fighting', 'ground'], resistant: ['normal', 'grass', 'ice', 'flying', 'psychic', 'bug', 'rock', 'dragon', 'steel', 'fairy'], immune: ["poison"] },
       fairy: { weak: ['poison', 'steel'], resistant: ['fighting', 'bug', 'dark'], immune: ['dragon'] },
     };
   
@@ -24,7 +24,6 @@ export default function TypeEffectiveness(primaryType, secondaryType) {
   
       const obj = {};
       types.forEach((type) => {
-        console.log(type)
         const typeEntry = typeChart[type];
   
         typeEntry.weak.forEach((weakType) => {
