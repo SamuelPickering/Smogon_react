@@ -1,8 +1,9 @@
 import React from 'react';
-import TypeEffectiveness from '../data/functions';
+import {TypeEffectiveness} from '../data/functions';
+import { Link } from 'react-router-dom';
 
 const TypeChart = (props) => {
-    const {type1, type2} = props
+    const {type1, type2, tier} = props
     const typeColors = {
         poison: '#934397',
         grass: '#72c232',
@@ -45,7 +46,7 @@ const TypeChart = (props) => {
       <tbody>
         <tr>
           {types.map((type) => (
-            <th key={type} className='type-head' style={{ backgroundColor: typeColors[type] }}>{type.substring(0, 3)}</th>
+            <th key={type} className='type-head' style={{ backgroundColor: typeColors[type] }}><Link to= {`/pokemon/${tier}/types/${type}`} style={{color: "inherit", textDecoration: "none"}}>{type.substring(0, 3)}</Link></th>
           ))}
         </tr>
         <tr>

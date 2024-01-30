@@ -1,6 +1,6 @@
-export default function TypeEffectiveness(primaryType, secondaryType) {
+export  function TypeEffectiveness(primaryType, secondaryType) {
     const typeChart = {
-      normal: { weak: [], resistant: ['rock', 'steel'], immune: ['ghost'] },
+      normal: { weak: ["fighting"], resistant: [], immune: ['ghost'] },
       fire: { weak: ['water', 'rock', 'ground'], resistant: ['fire', 'grass', 'ice', 'bug', 'steel', 'fairy'] },
       water: { weak: ['electric', 'grass'], resistant: ['fire', 'water', 'ice', 'steel'] },
       electric: { weak: ['ground'], resistant: ['electric', 'flying', 'steel'] },
@@ -35,9 +35,9 @@ export default function TypeEffectiveness(primaryType, secondaryType) {
         });
         typeEntry.resistant.forEach((resistantType) => {
           if (!obj[resistantType]) {
-            obj[resistantType] = 0.5;
+            obj[resistantType] = (0.5)
           } else {
-            obj[resistantType]*=0.5;
+            obj[resistantType]*=0.5
           }
         });
         typeEntry.immune && typeEntry.immune.forEach((immuneType) => {
@@ -55,4 +55,25 @@ export default function TypeEffectiveness(primaryType, secondaryType) {
       return obj
     }
   
-    // Example usage:
+    const typeColorMap = {
+        poison: '#934397',
+        grass: '#72c232',
+        water: '#3198f5',
+        fire: '#c71b00',
+        electric: '#f7c53c',
+        rock: '#9e853a',
+        ground: '#cdad50',
+        steel: '#9292a2',
+        flying: '#6982dd',
+        fighting: '#5c1f0e',
+        psychic: '#df2f69',
+        bug: '#8a9703',
+        dark: '#36291c',
+        ghost: '#434494',
+        fairy: '#f0b1f3',
+        ice: '#6ed4f5',
+        dragon: '#41318a',
+        normal: '#8f8b80',
+      };
+    
+      export const getTypeColor = (type) => type ? typeColorMap[type.toLowerCase()] || '#ffffff' :'#ffffff' 

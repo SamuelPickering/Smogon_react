@@ -5,7 +5,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 
 function Header() {
   return (
-    <Navbar  fixed="top" expand="lg" className="bg-body-tertiary">
+    <Navbar  sticky="top" expand="lg" className="bg-body-tertiary">
       <Container>
         <Navbar.Brand href="#home">Pokeanalytics</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />

@@ -12,6 +12,9 @@ button {
   color: red;
   border-radius: 14px;
 }
+.poke-search-container {
+  margin-bottom: 10px;
+}
 
 .type-button {
   background-color: red;
@@ -25,6 +28,22 @@ button {
   text-transform: uppercase;
   letter-spacing: 1px;
   text-shadow: rgba(0,0,0,.7) -1px -1px 0,
+}
+
+.type-button-big {
+  background-color: red;
+  color: white;
+  padding-left: 4px;
+  padding-right: 4px;
+  border-radius: 10px;
+  font-size: 14px;
+  padding:  1px 5px 1px 7px;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  max-height: 40px;
+  text-shadow: rgba(0,0,0,.7) -1px -1px 0,
+  
 }
 
 .type-chart {
@@ -61,4 +80,18 @@ button {
 
 .empty {
   background-color: transparent;
+}
+.sidebar {
+  position: sticky;
+  top: 8vh; /* Adjust the top value as needed 40 */
+  height: 100vh;
+  width: 300px;
+  overflow-y: auto;        /* Add vertical scroll if needed */
+  background-color: #f8f9fa; /* Set the background color */
+  padding: 15px; /* Add padding to the sidebar content */
+}
+
+.pokemon-info {
+  display: flex;
+  flex-direction: row;
 }
